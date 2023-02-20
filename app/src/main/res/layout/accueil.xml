@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/text"
+        android:text="@string/welcome" />
+
+    <Button
+        style="@style/button"
+        android:id="@+id/playBtn"
+        android:hint="@string/playBtn"
+        />
+
+    <Button
+        style="@style/button"
+        android:id="@+id/accountBtn"
+        android:hint="@string/accountBtn" />
+
+</LinearLayout>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Cookie Clicker</string>
+    <string name="homeBtn">Accueil</string>
+    <string name="welcome">Bienvenue</string>
+    <string name="playBtn">Jouer</string>
+    <string name="accountBtn">Mon Compte</string>
 </resources>
