@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".account_register">
+
+    <TextView
+        style="@style/titre"
+        android:text="@string/registerTitle" />
+
+    <TextView
+        style="@style/formText"
+        android:text="@string/usernameTitle" />
+
+    <EditText
+        android:id="@+id/username"
+        style="@style/edit"
+        android:hint="@string/username" />
+
+    <TextView
+        style="@style/formText"
+        android:text="@string/emailTitle" />
+
+    <EditText
+        android:id="@+id/email"
+        style="@style/edit"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        style="@style/formText"
+        android:text="@string/passwordTitle" />
+
+    <EditText
+        android:id="@+id/password"
+        style="@style/edit"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+    <TextView
+        style="@style/formText"
+        android:layout_span="2"
+        android:text="@string/avatar" />
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/avatarImg"
+            style="@style/avatarImg"
+            android:src="@drawable/circle" />
+
+        <Button
+            android:id="@+id/avatarBtn"
+            android:layout_gravity="center_vertical"
+            android:text="@string/avatarBtn" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/registerBtn"
+        style="@style/button"
+        android:text="@string/registerBtn" />
+
+</LinearLayout>

@@ -4,4 +4,17 @@
     <string name="welcome">Bienvenue</string>
     <string name="playBtn">Jouer</string>
     <string name="accountBtn">Mon Compte</string>
+
+    <string name="loginBtn">Se Connecter</string>
+    <string name="registerBtn">S\'inscrire</string>
+
+    <string name="registerTitle">Créer un compte</string>
+    <string name="usernameTitle">Veuillez saisir un username</string>
+    <string name="emailTitle">Veuillez saisir un e-mail</string>
+    <string name="passwordTitle">Veuillez saisir un mot de passe</string>
+    <string name="avatar">Veuillez choisir un avatar</string>
+    <string name="username">username</string>
+    <string name="email">e-mail</string>
+    <string name="password">password</string>
+    <string name="avatarBtn">choisir</string>
 </resources>

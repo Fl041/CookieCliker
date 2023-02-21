@@ -5,18 +5,17 @@
     android:orientation="vertical">
 
     <TextView
-        style="@style/text"
-        android:text="@string/welcome" />
+        style="@style/titre"
+        android:text="@string/accountBtn" />
 
     <Button
         style="@style/button"
-        android:id="@+id/playBtn"
-        android:hint="@string/playBtn"
-        />
+        android:id="@+id/loginBtn"
+        android:text="@string/loginBtn" />
 
     <Button
         style="@style/button"
-        android:id="@+id/accountBtn"
-        android:hint="@string/accountBtn" />
+        android:id="@+id/registerBtn"
+        android:text="@string/registerBtn" />
 
 </LinearLayout>
