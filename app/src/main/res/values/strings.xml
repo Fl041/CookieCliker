@@ -17,4 +17,11 @@
     <string name="email">e-mail</string>
     <string name="password">password</string>
     <string name="avatarBtn">choisir</string>
+
+    <string name="loginTitle">Se connecter</string>
+    <string name="loginEmail">Veuillez saisir votre e-mail</string>
+    <string name="loginPassword">Veuillez saisir votre mot de passe</string>
+
+    <string name="accountShowTitle">Mon Compte</string>
+    <string name="accountUpdateBtn">Modifier</string>
 </resources>
