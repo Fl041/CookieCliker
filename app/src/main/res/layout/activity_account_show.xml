@@ -8,21 +8,59 @@
         style="@style/titre"
         android:text="@string/accountShowTitle" />
 
-    <FrameLayout
+    <!--<FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/account_show_background" />
+            style="@style/accountShowBackground"
+            android:src="@drawable/account_show_background" />-->
+
+    <TextView
+        android:id="@+id/usernameShow"
+        style="@style/accountShow"
+        android:layout_marginTop="0dp" />
+
+    <TextView
+        android:id="@+id/emailShow"
+        style="@style/accountShow" />
+
+    <TextView
+        android:id="@+id/passwordShow"
+        style="@style/accountShow" />
+    <!--</FrameLayout>-->
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/accountShow"
+            android:id="@+id/avatarShow"
             style="@style/accountShow" />
 
-    </FrameLayout>
+        <ImageView
+            android:id="@+id/avatarImg"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/circle" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/cookieShow"
+            style="@style/accountShow" />
+
+        <ImageView
+            android:id="@+id/cookieImg"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/circle" />
+    </TableRow>
 
     <Button
         android:id="@+id/accountUpdateBtn"

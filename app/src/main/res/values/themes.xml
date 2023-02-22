@@ -85,18 +85,26 @@
     </style>
 
 
-    <!-- Style pour le background de la page Account Show -->
+    <!-- Style pour le texte (username, email...) de la page Account Show -->
     <style name="accountShow">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">30dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:layout_marginTop">30dp</item>
 
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">Open Sans</item>
-
-        <item name="background">@id/none</item>
     </style>
+
+
+    <!-- Style pour le background de la page account_show -->
+    <!--<style name="accountShowBackground">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:alpha">0.5</item>
+    </style>-->
 
 
     <!-- Style pour les messages d'alerte -->
