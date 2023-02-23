@@ -2,7 +2,10 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,5 +38,15 @@ public class account_show extends AppCompatActivity {
 
         TextView avatarShow = findViewById(R.id.avatarShow);
         avatarShow.setText(avatar + "\n");
+
+        // Click sur le bouton "MODIFIER" affiche la page account_update
+        Button accountUpdateBtn = findViewById(R.id.accountUpdateBtn);
+        accountUpdateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), account_update.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".account_register">
+    tools:context=".account_update">
 
     <TextView
         style="@style/titre"
-        android:text="@string/registerTitle" />
+        android:text="@string/updateTitle" />
 
     <TextView
         style="@style/formText"
-        android:text="@string/usernameTitle" />
+        android:text="@string/updateUsername" />
 
     <EditText
         android:id="@+id/username"
@@ -21,7 +21,7 @@
 
     <TextView
         style="@style/formText"
-        android:text="@string/emailTitle" />
+        android:text="@string/updateEmail" />
 
     <EditText
         android:id="@+id/email"
@@ -31,7 +31,7 @@
 
     <TextView
         style="@style/formText"
-        android:text="@string/passwordTitle" />
+        android:text="@string/updatePassword" />
 
     <EditText
         android:id="@+id/password"
@@ -42,7 +42,27 @@
     <TextView
         style="@style/formText"
         android:layout_span="2"
-        android:text="@string/avatar" />
+        android:text="@string/updateCookie" />
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/cookieImg"
+            style="@style/chooseImg"
+            android:src="@drawable/circle" />
+
+        <Button
+            android:id="@+id/cookieBtn"
+            android:layout_gravity="center_vertical"
+            android:text="@string/chooseBtn" />
+    </TableRow>
+
+    <TextView
+        style="@style/formText"
+        android:layout_span="2"
+        android:text="@string/updateAvatar" />
 
     <TableRow
         android:layout_width="wrap_content"
@@ -60,8 +80,8 @@
     </TableRow>
 
     <Button
-        android:id="@+id/registerBtn"
+        android:id="@+id/saveBtn"
         style="@style/button"
-        android:text="@string/registerBtn" />
+        android:text="@string/saveBtn" />
 
 </LinearLayout>
