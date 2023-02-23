@@ -47,12 +47,16 @@ Uri selectedImg;
                 String Email = email.getText().toString();
                 String Password = password.getText().toString();
                 Uri avatar = selectedImg;
+                Log.d("TAG", String.valueOf(avatar));
                 if(!isEmailValid(Email)) {
                     toast("Email");
                 }
-                if(!(isValid(Username) && isValid(Password)))
+                else if(!(isValid(Username) && isValid(Password)))
                 {
                     toast("username ou password");
+                }
+                else if(!ImageValid(avatar)){
+                    toast("Avatar");
                 }
                 else {
                     dbHelper.insertData(Username, Email, Password, avatar);
@@ -89,7 +93,6 @@ Uri selectedImg;
 
         if(resultCode == RESULT_OK && data != null) {
             selectedImg = data.getData();
-            Log.d("TAG", String.valueOf(selectedImg));
             ImageView imageView = findViewById(R.id.avatarImg);
             imageView.setImageURI(selectedImg);
         }
@@ -103,9 +106,15 @@ Uri selectedImg;
         return !text.equals("");
     }
 
+    boolean ImageValid(Uri avatar){
+        return !(String.valueOf(avatar).equals("null"));
+    }
     void toast(String champs) {
         if(champs.equals("Email")) {
             Toast.makeText(this, "Email invalide", Toast.LENGTH_LONG).show();
+        }
+        else if(champs.equals("Avatar")){
+            Toast.makeText(this, "Image invalide", Toast.LENGTH_LONG).show();
         }
         else{
 

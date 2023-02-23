@@ -85,8 +85,8 @@ public class AccountDBHelper extends SQLiteOpenHelper {
 
     public Cursor showconnectedaccount() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_ACCOUNTS+" WHERE "
-                +COLONNE_ISCONNECTED + "= true", null);
+        Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_ACCOUNTS/*+" WHERE "
+                +COLONNE_ISCONNECTED + "= true"*/, null);
         return cursor;
     }
 
@@ -103,6 +103,20 @@ public class AccountDBHelper extends SQLiteOpenHelper {
         return result ;
     }
 
+    public boolean existe(String email, String password){
+        SQLiteDatabase db = this.getReadableDatabase();
+        boolean result = false;
+        Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_ACCOUNTS+" WHERE "
+                +COLONNE_EMAIL +" = '" +email +"' and " + COLONNE_PASSWORD +
+                " = '" + password +"'", null);
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                return result = true;
+            }
+        }
+        return result ;
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNTS + ";");
@@ -110,11 +124,11 @@ public class AccountDBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void Connected(String username , String password){
+    public void Connected(String email , String password){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLONNE_ISCONNECTED,true);
-        db.update(TABLE_ACCOUNTS,values , COLONNE_USERNAME +" = '" +username +"' and " + COLONNE_PASSWORD +
+        db.update(TABLE_ACCOUNTS,values , COLONNE_EMAIL +" = '" +email +"' and " + COLONNE_PASSWORD +
                 " = '" + password +"'" , null  );
     }
 
