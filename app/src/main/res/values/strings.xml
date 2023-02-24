@@ -16,7 +16,7 @@
     <string name="username">username</string>
     <string name="email">e-mail</string>
     <string name="password">password</string>
-    <string name="avatarBtn">choisir</string>
+    <string name="chooseBtn">choisir</string>
 
     <string name="loginTitle">Se connecter</string>
     <string name="loginEmail">Veuillez saisir votre e-mail</string>
@@ -24,4 +24,12 @@
 
     <string name="accountShowTitle">Mon Compte</string>
     <string name="accountUpdateBtn">Modifier</string>
+
+    <string name="updateTitle">Modifier mon compte</string>
+    <string name="updateUsername">Modifier votre username</string>
+    <string name="updateEmail">Modifier votre e-mail</string>
+    <string name="updatePassword">Modifier votre mot de passe</string>
+    <string name="updateCookie">Modifier votre cookie</string>
+    <string name="updateAvatar">Modifier votre avatar</string>
+    <string name="saveBtn">Enregistrer</string>
 </resources>

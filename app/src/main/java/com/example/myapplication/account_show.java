@@ -6,6 +6,7 @@ import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,6 +53,7 @@ public class account_show extends AppCompatActivity {
         TextView avatarShow = findViewById(R.id.avatarShow);
         avatarShow.setText(avatar + "\n");
 
+
         ImageView imageAvatar = findViewById(R.id.avatarImg);
         imageAvatar.setImageBitmap(stringtobitmap(Imageavatar));
 
@@ -64,5 +67,6 @@ public class account_show extends AppCompatActivity {
             Log.d("Exception", "image error");
         }
         return bit ;
+
     }
 }
