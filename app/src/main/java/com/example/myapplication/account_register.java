@@ -52,7 +52,6 @@ Bitmap bit ;
                 String Email = email.getText().toString();
                 String Password = password.getText().toString();
                 String avatar = bitmaptoString(bit);
-                Log.d("TAG", String.valueOf(avatar));
                 if(!isEmailValid(Email)) {
                     toast("Email");
                 }

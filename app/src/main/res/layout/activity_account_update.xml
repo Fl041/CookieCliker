@@ -38,7 +38,7 @@
         style="@style/edit"
         android:hint="@string/password"
         android:inputType="textPassword" />
-
+<!--
     <TextView
         style="@style/formText"
         android:layout_span="2"
@@ -58,7 +58,7 @@
             android:layout_gravity="center_vertical"
             android:text="@string/chooseBtn" />
     </TableRow>
-
+-->
     <TextView
         style="@style/formText"
         android:layout_span="2"

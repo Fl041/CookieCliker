@@ -138,4 +138,14 @@ public class AccountDBHelper extends SQLiteOpenHelper {
         values.put(COLONNE_ISCONNECTED,false);
         db.update(TABLE_ACCOUNTS,values ,COLONNE_ISCONNECTED + "= " +"true"  , null );
     }
+
+    public void updateAccount(String username, String email , String password, String avatar){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLONNE_USERNAME, String.valueOf(username));
+        values.put(COLONNE_EMAIL, String.valueOf(email));
+        values.put(COLONNE_PASSWORD, String.valueOf(password));
+        values.put(COLONNE_AVATAR, String.valueOf(avatar));
+        db.update(TABLE_ACCOUNTS,values , COLONNE_ISCONNECTED + "= " +"true" , null  );
+    }
 }
