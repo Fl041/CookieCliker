@@ -41,9 +41,9 @@ public class account_update extends AppCompatActivity {
      Cursor cursor = dbHelper.showconnectedaccount();
         cursor.moveToFirst();
 
-        username.setHint(cursor.getString(1));
-        email.setHint(cursor.getString(2));
-        password.setHint(cursor.getString(3));
+        username.setText(cursor.getString(1));
+        email.setText(cursor.getString(2));
+        password.setText(cursor.getString(3));
         imageView.setImageBitmap(stringtobitmap(cursor.getString(4)));
 
         // Click sur le bouton "ENREGISTRER" qui redirige vers la page de account_show
@@ -57,9 +57,6 @@ public class account_update extends AppCompatActivity {
                 String Password = password.getText().toString();
                 bit = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
                 String avatar = bitmaptoString(bit);
-                if(Username.equals("")) Username = cursor.getString(1);
-                if(Email.equals("")) Email = cursor.getString(2);
-                if(Password.equals("")) Password = cursor.getString(3);
                 if(!isEmailValid(Email)) {
                     toast("Email");
                 }

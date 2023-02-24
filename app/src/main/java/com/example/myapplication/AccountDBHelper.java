@@ -85,8 +85,8 @@ public class AccountDBHelper extends SQLiteOpenHelper {
 
     public Cursor showconnectedaccount() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_ACCOUNTS/*+" WHERE "
-                +COLONNE_ISCONNECTED + "= true"*/, null);
+        Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_ACCOUNTS+" WHERE "
+                +COLONNE_ISCONNECTED + "= true", null);
         return cursor;
     }
 
