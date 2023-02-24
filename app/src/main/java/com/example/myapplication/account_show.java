@@ -6,13 +6,12 @@ import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 
@@ -57,6 +56,15 @@ public class account_show extends AppCompatActivity {
         ImageView imageAvatar = findViewById(R.id.avatarImg);
         imageAvatar.setImageBitmap(stringtobitmap(Imageavatar));
 
+        // Click sur le bouton "MODIFIER" affiche la page account_update
+        Button accountUpdateBtn = findViewById(R.id.accountUpdateBtn);
+        accountUpdateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), account_update.class);
+                startActivity(intent);
+            }
+        });
     }
     private Bitmap stringtobitmap(String avatar){
         Bitmap bit = null ;
