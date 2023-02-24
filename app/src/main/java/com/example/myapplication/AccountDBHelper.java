@@ -60,7 +60,7 @@ public class AccountDBHelper extends SQLiteOpenHelper {
         db.execSQL(REQUETE_CREATION_BD);
     }
 
-    public void insertData(String username, String email, String password,Uri avatar) {
+    public void insertData(String username, String email, String password,String avatar) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
