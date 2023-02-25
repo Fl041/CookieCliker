@@ -25,7 +25,8 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 
 public class account_update extends AppCompatActivity {
-    Bitmap bit ;
+    Bitmap bit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +39,7 @@ public class account_update extends AppCompatActivity {
 
         AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
         // Récupérer les informations de l'utilisateur dans la BDD
-     Cursor cursor = dbHelper.showconnectedaccount();
+        Cursor cursor = dbHelper.showconnectedaccount();
         cursor.moveToFirst();
 
         username.setText(cursor.getString(1));
@@ -57,17 +58,13 @@ public class account_update extends AppCompatActivity {
                 String Password = password.getText().toString();
                 bit = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
                 String avatar = bitmaptoString(bit);
-                if(!isEmailValid(Email)) {
+                if (!isEmailValid(Email)) {
                     toast("Email");
-                }
-                else if(!(isValid(Username) && isValid(Password)))
-                {
+                } else if (!(isValid(Username) && isValid(Password))) {
                     toast("username ou password");
-                }
-                else if(!ImageValid(avatar)){
+                } else if (!ImageValid(avatar)) {
                     toast("Avatar");
-                }
-                else {
+                } else {
                     dbHelper.updateAccount(Username, Email, Password, avatar);
                     Toast.makeText(account_update.this, "Account has been updated.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), account_show.class);
@@ -92,7 +89,7 @@ public class account_update extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode == RESULT_OK && data != null) {
+        if (resultCode == RESULT_OK && data != null) {
             Uri selectedImg = data.getData();
             ImageView imageView = findViewById(R.id.avatarImg);
             imageView.setImageURI(selectedImg);
@@ -101,41 +98,43 @@ public class account_update extends AppCompatActivity {
         }
     }
 
-    private Bitmap stringtobitmap(String avatar){
-        Bitmap bit = null ;
+    private Bitmap stringtobitmap(String avatar) {
+        Bitmap bit = null;
         try {
-            byte[] decodeString = Base64.decode(avatar , Base64.DEFAULT) ;
-            bit = BitmapFactory.decodeByteArray(decodeString , 0 , decodeString.length);
-        }catch(Exception e){
+            byte[] decodeString = Base64.decode(avatar, Base64.DEFAULT);
+            bit = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
+        } catch (Exception e) {
             Log.d("Exception", "image error");
         }
-        return bit ;
+        return bit;
 
     }
-    private String bitmaptoString(Bitmap bit){
-        ByteArrayOutputStream stream = new ByteArrayOutputStream() ;
-        bit.compress(Bitmap.CompressFormat.PNG , 50 , stream) ;
+
+    private String bitmaptoString(Bitmap bit) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bit.compress(Bitmap.CompressFormat.PNG, 50, stream);
         byte[] byte_Array = stream.toByteArray();
-        return Base64.encodeToString(byte_Array , 0);
+        return Base64.encodeToString(byte_Array, 0);
     }
+
     boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
+
     boolean isValid(CharSequence text) {
         return !text.equals("");
     }
 
-    boolean ImageValid(String avatar){
+    boolean ImageValid(String avatar) {
         return !avatar.equals("");
     }
+
     void toast(String champs) {
-        if(champs.equals("Email")) {
+        if (champs.equals("Email")) {
             Toast.makeText(this, "Email invalide", Toast.LENGTH_LONG).show();
-        }
-        else if(champs.equals("Avatar")){
+        } else if (champs.equals("Avatar")) {
             Toast.makeText(this, "Image invalide", Toast.LENGTH_LONG).show();
-        }
-        else{
+        } else {
 
         }
         Toast.makeText(this, "Le username et le password ne peuvent pas être vide", Toast.LENGTH_LONG).show();

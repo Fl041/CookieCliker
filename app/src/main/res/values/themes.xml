@@ -67,7 +67,6 @@
         <item name="android:paddingLeft">10dp</item>
 
         <item name="android:textSize">15sp</item>
-        <item name="android:textStyle">italic</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">Open Sans</item>
         <item name="android:background">@color/white</item>
@@ -105,6 +104,31 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:alpha">0.5</item>
     </style>-->
+
+
+    <!-- Style pour le CookieCount -->
+    <style name="cookieCount">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:fontFamily">Open Sans</item>
+    </style>
+
+
+    <!-- Style pour le cookie -->
+    <style name="cookie">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">400dp</item>
+        <item name="android:layout_margin">30dp</item>
+    </style>
 
 
     <!-- Style pour les messages d'alerte -->

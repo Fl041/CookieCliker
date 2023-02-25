@@ -46,8 +46,8 @@ public class account_show extends AppCompatActivity {
         TextView passwordShow = findViewById(R.id.passwordShow);
         passwordShow.setText(password + "\n");
 
-        TextView cookieShow = findViewById(R.id.cookieShow);
-        cookieShow.setText(cookie + "\n");
+        //TextView cookieShow = findViewById(R.id.cookieShow);
+        //cookieShow.setText(cookie + "\n");
 
         TextView avatarShow = findViewById(R.id.avatarShow);
         avatarShow.setText(avatar + "\n");
