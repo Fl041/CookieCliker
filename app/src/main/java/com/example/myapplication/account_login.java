@@ -36,7 +36,7 @@ public class account_login extends AppCompatActivity {
             public void onClick(View view) {
                 String email = getEmail.getText().toString();
                 String password = getPassword.getText().toString();
-                if(dbHelper.existe(email, password )){
+               if(dbHelper.existe(email, password )){
                     dbHelper.Disconnect();
                     dbHelper.Connected(email,password);
                     Toast.makeText(account_login.this, "Account has been connected.", Toast.LENGTH_SHORT).show();

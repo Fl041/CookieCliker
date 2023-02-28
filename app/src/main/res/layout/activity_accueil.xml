@@ -18,4 +18,9 @@
         android:id="@+id/accountBtn"
         android:text="@string/accountBtn" />
 
+    <Button
+        style="@style/button"
+        android:id="@+id/decoBtn"
+        android:text="Se Déconnecté" />
+
 </LinearLayout>

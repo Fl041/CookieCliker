@@ -3,10 +3,12 @@ package com.example.myapplication;
 import static com.example.myapplication.AccountDBHelper.BASE_NOM;
 import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.database.Cursor;
@@ -33,6 +35,7 @@ public class account_show extends AppCompatActivity {
         String username = "Username : " +cursor.getString(1);
         String email = "E-mail : " + cursor.getString(2);
         String password = "Password : " + cursor.getString(3);
+        String cookies = "Cookies : " + cursor.getString(6);
         String Imageavatar = cursor.getString(4);
 
         String cookie = "Cookie : ";
@@ -48,8 +51,8 @@ public class account_show extends AppCompatActivity {
         TextView passwordShow = findViewById(R.id.passwordShow);
         passwordShow.setText(password + "\n");
 
-        //TextView cookieShow = findViewById(R.id.cookieShow);
-        //cookieShow.setText(cookie + "\n");
+        TextView cookieShow = findViewById(R.id.cookiesnb);
+        cookieShow.setText(cookies + "\n");
 
         TextView avatarShow = findViewById(R.id.avatarShow);
         avatarShow.setText(avatar + "\n");
@@ -78,5 +81,14 @@ public class account_show extends AppCompatActivity {
         }
         return bit ;
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()  == android.R.id.home){
+            Intent intent = new Intent(getApplicationContext(), accueil.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
