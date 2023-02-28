@@ -3,12 +3,14 @@ package com.example.myapplication;
 import static com.example.myapplication.AccountDBHelper.BASE_NOM;
 import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +22,9 @@ public class account_login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_login);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Accueil");
+
         AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
         EditText getEmail = findViewById(R.id.email);
         EditText getPassword = findViewById(R.id.password);
@@ -45,5 +50,13 @@ public class account_login extends AppCompatActivity {
             }
         }
         );
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()  == android.R.id.home){
+            Intent intent = new Intent(getApplicationContext(), accueil.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

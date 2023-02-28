@@ -34,6 +34,9 @@ public class AccountDBHelper extends SQLiteOpenHelper {
     public static final String COLONNE_ISCONNECTED = "isconnected";
     public static final int COLONNE_ISCONNECTED_ID = 5;
 
+    public static final String COLONNE_NBCOOKIES = "nbcookies";
+    public static final int COLONNE_NBCOOKIES_ID = 6;
+
     /* Requête SQL de la création de la table "table_accounts" */
     private static final String REQUETE_CREATION_BD = "create table "
             + TABLE_ACCOUNTS + " (" + COLONNE_ID
@@ -42,7 +45,7 @@ public class AccountDBHelper extends SQLiteOpenHelper {
             + " text not null, " + COLONNE_PASSWORD
             + " text not null, " + COLONNE_AVATAR
             + " text not null, " + COLONNE_ISCONNECTED+
-            " boolean);";
+            " boolean" + COLONNE_NBCOOKIES + "integer);";
 
     /**
      * L'instance de la base qui sera manipulée au travers de cette classe
@@ -70,6 +73,7 @@ public class AccountDBHelper extends SQLiteOpenHelper {
         values.put(COLONNE_PASSWORD, String.valueOf(password));
         values.put(COLONNE_AVATAR, String.valueOf(avatar));
         values.put(COLONNE_ISCONNECTED,false);
+        values.put(COLONNE_NBCOOKIES, 0);
 
         db.insert(TABLE_ACCOUNTS, null, values);
         db.close();
