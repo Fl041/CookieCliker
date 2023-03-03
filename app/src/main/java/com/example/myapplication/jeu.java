@@ -15,8 +15,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 public class jeu extends AppCompatActivity {
     int count;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,14 +36,27 @@ public class jeu extends AppCompatActivity {
         Button btup = (Button) findViewById(R.id.upgradesBtn) ;
 
         if(dbHelper.isconnected()){
-            Cursor cursor = dbHelper.showconnectedaccount() ;
-            cursor.moveToFirst();
-            count = Integer.parseInt(cursor.getString(6));
-            cookieCount.setText("Cookies : " + count);
+            Intent ServiceCookie = new Intent(this, com.example.myapplication.ServiceCookie.class);
+            startService(ServiceCookie);
+            final Runnable task = new Runnable() {
+                @Override
+                public void run() {
+                    Cursor cursor = dbHelper.showconnectedaccount();
+                    cursor.moveToFirst();
+                    count = Integer.parseInt(cursor.getString(6));
+                    cookieCount.setText("Cookies : " + count);
+                }
+            };
+
+            final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+            executor.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
 
             cookie.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Cursor cursor = dbHelper.showconnectedaccount() ;
+                    cursor.moveToFirst();
+                    count = Integer.parseInt(cursor.getString(6));
                     count++ ;
                     dbHelper.updatenbcookies(count);
                     cookieCount.setText("Cookies : " + count);
