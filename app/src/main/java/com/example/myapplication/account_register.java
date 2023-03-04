@@ -3,6 +3,7 @@ package com.example.myapplication;
 import static com.example.myapplication.AccountDBHelper.BASE_NOM;
 import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +18,7 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Base64;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -32,6 +34,8 @@ Bitmap bit ;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_register);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Accueil");
 
         AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
 
@@ -134,5 +138,14 @@ Bitmap bit ;
         }
         Toast.makeText(this, "Le username et le password ne peuvent pas être vide", Toast.LENGTH_LONG).show();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()  == android.R.id.home){
+            Intent intent = new Intent(getApplicationContext(), accueil.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

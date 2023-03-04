@@ -1,9 +1,11 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,6 +15,8 @@ public class account_home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_home);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Accueil");
 
         // Aller au layout login en cliquant sur le bouton "Se Connecter"
         Button loginBtn = findViewById(R.id.loginBtn);
@@ -31,5 +35,14 @@ public class account_home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()  == android.R.id.home){
+            Intent intent = new Intent(getApplicationContext(), accueil.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

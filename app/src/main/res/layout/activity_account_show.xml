@@ -28,6 +28,10 @@
     <TextView
         android:id="@+id/passwordShow"
         style="@style/accountShow" />
+
+    <TextView
+        android:id="@+id/cookiesnb"
+        style="@style/accountShow" />
     <!--</FrameLayout>-->
 
     <TableRow
