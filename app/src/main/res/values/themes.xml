@@ -130,6 +130,44 @@
         <item name="android:layout_margin">30dp</item>
     </style>
 
+    <!-- Style pour le titre du fragment (Upgrades) -->
+    <style name="upgradesTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginLeft">50dp</item>
+
+        <item name="android:textSize">25sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+
+    <!-- Style pour la croix (pour fermer le fragment) -->
+    <style name="closeCross">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_gravity">top|right</item>
+
+        <item name="android:src">@drawable/cross</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+
+    <!-- Style pour le Switch Button (Cookie Booster lv. 1) -->
+    <style name="switchButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">100dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+
+        <item name="android:textSize">20dp</item>
+        <item name="switchPadding">25dp</item>
+    </style>
+
 
     <!-- Style pour les messages d'alerte -->
     <style name="alertMessage">

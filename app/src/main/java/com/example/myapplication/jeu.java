@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 public class jeu extends AppCompatActivity {
 
+    int count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,13 +22,23 @@ public class jeu extends AppCompatActivity {
         // Incrémenter le nombre de cookies
         TextView cookieCount = findViewById(R.id.cookieCount);
         ImageView cookie = findViewById(R.id.cookie);
-        final int[] count = {0};
 
         cookie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                count[0]++;
-                cookieCount.setText("Cookies : " + count[0]);
+                count++;
+                cookieCount.setText("Cookies : " + count);
+            }
+        });
+
+        // Afficher le fragment upgrades après avoir cliqué sur le bouton
+        Button upgradesBtn = findViewById(R.id.upgradesBtn);
+        FragmentContainerView upgradesFragment = findViewById(R.id.upgradesFragment);
+
+        upgradesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                upgradesFragment.setVisibility(View.VISIBLE);
             }
         });
     }

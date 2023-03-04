@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="5000dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.UpgradesFragment"
+    android:id="@+id/upgradesFragment"
+    android:background="@color/white">
+
+    <TextView
+        style="@style/upgradesTitle"
+        android:text="@string/upgradesTitle" />
+
+    <ImageView
+        android:id="@+id/closeCross"
+        style="@style/closeCross" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/customSwitch"
+        android:text="@string/cookieBooster"
+        style="@style/switchButton"
+        android:thumb="@drawable/switch_button_icon"
+        app:track="@drawable/switch_button_background" />
+
+</FrameLayout>
