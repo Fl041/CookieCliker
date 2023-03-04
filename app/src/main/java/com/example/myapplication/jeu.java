@@ -5,6 +5,8 @@ import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -22,6 +24,7 @@ import java.util.concurrent.TimeUnit;
 public class jeu extends AppCompatActivity {
     int count;
 
+    int count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,59 +36,23 @@ public class jeu extends AppCompatActivity {
         TextView cookieCount = findViewById(R.id.cookieCount);
         ImageView cookie = findViewById(R.id.cookie);
 
-        Button btup = (Button) findViewById(R.id.upgradesBtn) ;
+        cookie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count++;
+                cookieCount.setText("Cookies : " + count);
+            }
+        });
 
-        if(dbHelper.isconnected()){
-            Intent ServiceCookie = new Intent(this, com.example.myapplication.ServiceCookie.class);
-            startService(ServiceCookie);
-            final Runnable task = new Runnable() {
-                @Override
-                public void run() {
-                    Cursor cursor = dbHelper.showconnectedaccount();
-                    cursor.moveToFirst();
-                    count = Integer.parseInt(cursor.getString(6));
-                    cookieCount.setText("Cookies : " + count);
-                }
-            };
+        // Afficher le fragment upgrades après avoir cliqué sur le bouton
+        Button upgradesBtn = findViewById(R.id.upgradesBtn);
+        FragmentContainerView upgradesFragment = findViewById(R.id.upgradesFragment);
 
-            final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-            executor.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
-
-            cookie.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Cursor cursor = dbHelper.showconnectedaccount() ;
-                    cursor.moveToFirst();
-                    count = Integer.parseInt(cursor.getString(6));
-                    count++ ;
-                    dbHelper.updatenbcookies(count);
-                    cookieCount.setText("Cookies : " + count);
-                }
-            });
-        }
-        else{
-            count = 0 ;
-            cookieCount.setText("Cookies : " + count);
-            // bouton upgrade
-            btup.setVisibility(View.INVISIBLE);
-            // Incrémenter le nombre de cookies
-            cookie.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    count++;
-                    cookieCount.setText("Cookies : " + count);
-                }
-            });
-        }
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()  == android.R.id.home){
-            Intent intent = new Intent(getApplicationContext(), accueil.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
+        upgradesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                upgradesFragment.setVisibility(View.VISIBLE);
+            }
+        });
     }
 }
