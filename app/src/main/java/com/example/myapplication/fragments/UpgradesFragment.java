@@ -1,19 +1,28 @@
 package com.example.myapplication.fragments;
 
+import static com.example.myapplication.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
+
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentManager;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.AccountDBHelper;
 import com.example.myapplication.R;
 import com.example.myapplication.account_show;
 import com.example.myapplication.jeu;
@@ -81,9 +90,23 @@ public class UpgradesFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-        return view;
-    }
-
+        AccountDBHelper dbHelper = new AccountDBHelper(getActivity(), BASE_NOM, null, BASE_VERSION);
+        if (dbHelper.isconnected()) {
+            Cursor cursor = dbHelper.showconnectedaccount();
+            cursor.moveToFirst();
+            SwitchCompat switchbutton = (SwitchCompat) view.findViewById(R.id.customSwitch);
+            if (cursor.getString(7).equals("1")) switchbutton.setChecked(true);
+            if(Integer.parseInt(cursor.getString(6) )< 30)switchbutton.setVisibility(View.INVISIBLE) ;
+            switchbutton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        dbHelper.updateupgrade1true();
+                    } else {
+                        dbHelper.updateupgrade1false();
+                    }
+                }
+            });
+        }
+        return view; }
 }

@@ -10,8 +10,8 @@ import android.net.Uri;
 public class AccountDBHelper extends SQLiteOpenHelper {
 
     /* Création de la BDD accounts */
-    static final int BASE_VERSION = 1;
-    static final String BASE_NOM = "accounts.db";
+    public static final int BASE_VERSION = 1;
+    public static final String BASE_NOM = "accounts.db";
 
     /* Création de la table "table_accounts" et des colonnes */
     private static final String TABLE_ACCOUNTS = "table_accounts";
@@ -37,6 +37,9 @@ public class AccountDBHelper extends SQLiteOpenHelper {
     public static final String COLONNE_Cookies = "cookies";
     public static final int COLONNE_Cookies_ID = 6;
 
+    public static final String COLONNE_UPGRADE1 = "upgrade1";
+    public static final int COLONNE_UPGRADE1_ID = 7;
+
     /* Requête SQL de la création de la table "table_accounts" */
     private static final String REQUETE_CREATION_BD = "create table "
             + TABLE_ACCOUNTS + " (" + COLONNE_ID
@@ -45,7 +48,8 @@ public class AccountDBHelper extends SQLiteOpenHelper {
             + " text not null, " + COLONNE_PASSWORD
             + " text not null, " + COLONNE_AVATAR
             + " text not null, " + COLONNE_ISCONNECTED+
-            " boolean, " +COLONNE_Cookies + " integer);";
+            " boolean, " +COLONNE_Cookies + " integer, " +
+            COLONNE_UPGRADE1 + " boolean);";
 
     /**
      * L'instance de la base qui sera manipulée au travers de cette classe
@@ -74,16 +78,9 @@ public class AccountDBHelper extends SQLiteOpenHelper {
         values.put(COLONNE_AVATAR, String.valueOf(avatar));
         values.put(COLONNE_ISCONNECTED,false);
         values.put(COLONNE_Cookies, 0);
+        values.put(COLONNE_UPGRADE1,false);
         db.insert(TABLE_ACCOUNTS, null, values);
         db.close();
-    }
-
-    public Cursor readAccount(String email , String password ) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_ACCOUNTS+" WHERE "
-                +COLONNE_EMAIL +" = '" +email +"' and " + COLONNE_PASSWORD +
-                " = '" + password +"'", null);
-        return cursor;
     }
 
     public Cursor showconnectedaccount() {
@@ -156,6 +153,20 @@ public class AccountDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLONNE_Cookies, nbcookies);
+        db.update(TABLE_ACCOUNTS,values , COLONNE_ISCONNECTED + "= " +"true" , null  );
+    }
+
+    public void updateupgrade1true(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLONNE_UPGRADE1, true);
+        db.update(TABLE_ACCOUNTS,values , COLONNE_ISCONNECTED + "= " +"true" , null  );
+    }
+
+    public void updateupgrade1false(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLONNE_UPGRADE1, false);
         db.update(TABLE_ACCOUNTS,values , COLONNE_ISCONNECTED + "= " +"true" , null  );
     }
 }

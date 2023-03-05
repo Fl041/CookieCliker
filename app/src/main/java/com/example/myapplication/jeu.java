@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentContainerView;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -67,7 +68,12 @@ public class jeu extends AppCompatActivity {
                     Cursor cursor = dbHelper.showconnectedaccount() ;
                     cursor.moveToFirst();
                     count = Integer.parseInt(cursor.getString(6));
-                    count++ ;
+                    if(cursor.getString(7).equals("1")){
+                        count += 2;
+                    }
+                    else{
+                        count++ ;
+                    }
                     dbHelper.updatenbcookies(count);
                 }
             });
