@@ -21,6 +21,6 @@
     <Button
         style="@style/button"
         android:id="@+id/decoBtn"
-        android:text="Se Déconnecté" />
+        android:text="@string/logoutBtn" />
 
 </LinearLayout>

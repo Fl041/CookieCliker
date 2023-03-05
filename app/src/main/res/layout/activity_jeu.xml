@@ -28,12 +28,6 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/upgradesFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:name="com.example.myapplication.fragments.UpgradesFragment"
-        android:visibility="gone"
-        android:alpha="0.9" />
-
-
+        style="@style/upgradesFragment" />
 
 </RelativeLayout>

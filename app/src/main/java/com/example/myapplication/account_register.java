@@ -6,9 +6,13 @@ import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.PackageManagerCompat;
 
 import android.content.Intent;
 
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -29,7 +33,10 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 
 public class account_register<selectedImg> extends AppCompatActivity {
-Bitmap bit ;
+
+    ImageView avatarImg;
+    Bitmap bit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +52,6 @@ Bitmap bit ;
         ImageView imageView = findViewById(R.id.avatarImg);
 
 
-
         // Click sur le bouton "S'INSCRIRE" qui redirige vers la page de connexion
         Button registerBtn = (Button) findViewById(R.id.registerBtn);
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -56,17 +62,13 @@ Bitmap bit ;
                 String Email = email.getText().toString();
                 String Password = password.getText().toString();
                 String avatar = bitmaptoString(bit);
-                if(!isEmailValid(Email)) {
+                if (!isEmailValid(Email)) {
                     toast("Email");
-                }
-                else if(!(isValid(Username) && isValid(Password)))
-                {
+                } else if (!(isValid(Username) && isValid(Password))) {
                     toast("username ou password");
-                }
-                else if(!ImageValid(avatar)){
+                } else if (!ImageValid(avatar)) {
                     toast("Avatar");
-                }
-                else {
+                } else {
                     dbHelper.insertData(Username, Email, Password, avatar);
                     username.setText("");
                     email.setText("");
@@ -81,7 +83,7 @@ Bitmap bit ;
             }
         });
 
-        // Click sur le bouton "CHOISIR" pour choisir une image d'avatar
+        // Click sur le bouton "DOCUMENTS" pour choisir une image d'avatar dans les fichiers du téléphone
         Button avatarBtn = (Button) findViewById(R.id.avatarBtn);
         avatarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +94,22 @@ Bitmap bit ;
         });
 
 
+        // Click sur le bouton "CAMERA" pour prendre une photo
+        Button avatarBtnCamera = (Button) findViewById(R.id.avatarBtnCamera);
+        // Demande d'autorisation d'exécution de la caméra
+        if (ContextCompat.checkSelfPermission(account_register.this, android.Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(account_register.this, new String[] {
+                    android.Manifest.permission.CAMERA
+            }, 100);
+        }
+        avatarBtnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intentCamera, 100);
+            }
+        });
     }
 
     // Afficher l'avatar sélectionné
@@ -99,19 +117,30 @@ Bitmap bit ;
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode == RESULT_OK && data != null) {
+        // Pour les DOCUMENTS
+        //if (resultCode == RESULT_OK && data != null) {
+        if (requestCode == 3) {
             Uri selectedImg = data.getData();
             ImageView imageView = findViewById(R.id.avatarImg);
             imageView.setImageURI(selectedImg);
             bit = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-
         }
+
+        // Pour la CAMERA
+        if (requestCode == 100) {
+            Bitmap bitmapCamera = (Bitmap) data.getExtras().get("data");
+            ImageView avatarImgCamera = findViewById(R.id.avatarImg);
+            avatarImgCamera.setImageBitmap(bitmapCamera);
+        }
+
+
     }
-    private String bitmaptoString(Bitmap bit){
-        ByteArrayOutputStream stream = new ByteArrayOutputStream() ;
-        bit.compress(Bitmap.CompressFormat.PNG , 50 , stream) ;
+
+    private String bitmaptoString(Bitmap bit) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bit.compress(Bitmap.CompressFormat.PNG, 50, stream);
         byte[] byte_Array = stream.toByteArray();
-        return Base64.encodeToString(byte_Array , 0);
+        return Base64.encodeToString(byte_Array, 0);
     }
 
 
@@ -123,17 +152,16 @@ Bitmap bit ;
         return !text.equals("");
     }
 
-    boolean ImageValid(String avatar){
+    boolean ImageValid(String avatar) {
         return !avatar.equals("");
     }
+
     void toast(String champs) {
-        if(champs.equals("Email")) {
+        if (champs.equals("Email")) {
             Toast.makeText(this, "Email invalide", Toast.LENGTH_LONG).show();
-        }
-        else if(champs.equals("Avatar")){
+        } else if (champs.equals("Avatar")) {
             Toast.makeText(this, "Image invalide", Toast.LENGTH_LONG).show();
-        }
-        else{
+        } else {
 
         }
         Toast.makeText(this, "Le username et le password ne peuvent pas être vide", Toast.LENGTH_LONG).show();
@@ -142,7 +170,7 @@ Bitmap bit ;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()  == android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             Intent intent = new Intent(getApplicationContext(), accueil.class);
             startActivity(intent);
         }

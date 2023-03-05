@@ -27,9 +27,11 @@ public class account_show extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_show);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Accueil");
-        AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
+        String navBar = getString(R.string.navBar);
+        getSupportActionBar().setTitle(navBar);
+
         // Récupérer les informations de l'utilisateur dans la BDD
+        AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
         Cursor cursor = dbHelper.showconnectedaccount();
         cursor.moveToFirst();
         String username = "Username : " +cursor.getString(1);

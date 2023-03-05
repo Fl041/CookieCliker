@@ -130,6 +130,17 @@
         <item name="android:layout_margin">30dp</item>
     </style>
 
+
+    <!-- Syle pour le fragment (à partir de l'activité jeu) -->
+    <style name="upgradesFragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:name">com.example.myapplication.fragments.UpgradesFragment</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:alpha">0.9</item>
+    </style>
+
+
     <!-- Style pour le titre du fragment (Upgrades) -->
     <style name="upgradesTitle">
         <item name="android:layout_width">match_parent</item>

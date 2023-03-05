@@ -23,7 +23,8 @@ public class account_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_login);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Accueil");
+        String navBar = getString(R.string.navBar);
+        getSupportActionBar().setTitle(navBar);
 
         AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
         EditText getEmail = findViewById(R.id.email);
