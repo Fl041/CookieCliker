@@ -15,6 +15,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -124,13 +129,16 @@ public class account_register<selectedImg> extends AppCompatActivity {
             ImageView imageView = findViewById(R.id.avatarImg);
             imageView.setImageURI(selectedImg);
             bit = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+            bit = getCircularBitmap(bit);
+            imageView.setImageBitmap(bit);
         }
 
         // Pour la CAMERA
         if (requestCode == 100) {
-            Bitmap bitmapCamera = (Bitmap) data.getExtras().get("data");
+            bit = (Bitmap) data.getExtras().get("data");
+            bit = getCircularBitmap(bit);
             ImageView avatarImgCamera = findViewById(R.id.avatarImg);
-            avatarImgCamera.setImageBitmap(bitmapCamera);
+            avatarImgCamera.setImageBitmap(bit);
         }
 
 
@@ -175,5 +183,37 @@ public class account_register<selectedImg> extends AppCompatActivity {
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public static Bitmap getCircularBitmap(Bitmap bitmap) {
+        Bitmap output;
+
+        if (bitmap.getWidth() > bitmap.getHeight()) {
+            output = Bitmap.createBitmap(bitmap.getHeight(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        } else {
+            output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getWidth(), Bitmap.Config.ARGB_8888);
+        }
+
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+        float r = 0;
+
+        if (bitmap.getWidth() > bitmap.getHeight()) {
+            r = bitmap.getHeight() / 2;
+        } else {
+            r = bitmap.getWidth() / 2;
+        }
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawCircle(r, r, r, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        return output;
     }
 }

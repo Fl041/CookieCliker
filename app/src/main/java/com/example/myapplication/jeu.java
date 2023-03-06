@@ -30,14 +30,11 @@ public class jeu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        String navBar = getString(R.string.navBar);
-        getSupportActionBar().setTitle(navBar);
-
+        getSupportActionBar().setTitle("Accueil");
         AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
 
         TextView cookieCount = findViewById(R.id.cookieCount);
         ImageView cookie = findViewById(R.id.cookie);
-
         // Afficher le fragment upgrades après avoir cliqué sur le bouton
         Button upgradesBtn = findViewById(R.id.upgradesBtn);
         FragmentContainerView upgradesFragment = findViewById(R.id.upgradesFragment);
