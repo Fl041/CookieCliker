@@ -57,6 +57,12 @@
             android:id="@+id/avatarBtn"
             android:layout_gravity="center_vertical"
             android:text="@string/chooseBtn" />
+
+        <Button
+            android:id="@+id/avatarBtnCamera"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="25dp"
+            android:text="@string/cameraBtn" />
     </TableRow>
 
     <Button

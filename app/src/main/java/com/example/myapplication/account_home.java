@@ -16,7 +16,8 @@ public class account_home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Accueil");
+        String navBar = getString(R.string.navBar);
+        getSupportActionBar().setTitle(navBar);
 
         // Aller au layout login en cliquant sur le bouton "Se Connecter"
         Button loginBtn = findViewById(R.id.loginBtn);

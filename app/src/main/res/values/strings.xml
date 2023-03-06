@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">Cookie Clicker</string>
-    <string name="homeBtn">Accueil</string>
+    <string name="navBar">Retourner à l\'accueil</string>
     <string name="welcome">Bienvenue</string>
     <string name="playBtn">Jouer</string>
     <string name="accountBtn">Mon Compte</string>
 
     <string name="loginBtn">Se Connecter</string>
+    <string name="logoutBtn">Se Déconnecter</string>
     <string name="registerBtn">S\'inscrire</string>
 
     <string name="registerTitle">Créer un compte</string>
@@ -16,7 +17,8 @@
     <string name="username">username</string>
     <string name="email">e-mail</string>
     <string name="password">password</string>
-    <string name="chooseBtn">choisir</string>
+    <string name="chooseBtn">documents</string>
+    <string name="cameraBtn">caméra</string>
 
     <string name="loginTitle">Se connecter</string>
     <string name="loginEmail">Veuillez saisir votre e-mail</string>
