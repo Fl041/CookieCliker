@@ -14,10 +14,11 @@
         style="@style/cookieCount"
         android:text="@string/cookieCount" />
 
-    <ImageView
-        android:id="@+id/cookie"
-        style="@style/cookie"
-        android:src="@drawable/cookie" />
+        <ImageView
+            android:id="@+id/cookie"
+            style="@style/cookie"
+            android:src="@drawable/cookie" />
+
 
     <Button
         android:id="@+id/upgradesBtn"

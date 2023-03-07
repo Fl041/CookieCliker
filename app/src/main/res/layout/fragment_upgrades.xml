@@ -18,9 +18,14 @@
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/customSwitch"
-        android:text="@string/cookieBooster"
         style="@style/switchButton"
+        android:text="@string/cookieBooster"
         android:thumb="@drawable/switch_button_icon"
         app:track="@drawable/switch_button_background" />
+
+    <TextView
+        style="@style/alertMessage"
+        android:id="@+id/alert"
+        android:text="Vous ne pouvez pas utiliser cookie booster avant d'avoir 30 cookies" />
 
 </FrameLayout>
