@@ -39,13 +39,13 @@ public class account_show extends AppCompatActivity {
         AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
         Cursor cursor = dbHelper.showconnectedaccount();
         cursor.moveToFirst();
-        String username = "Username : " +cursor.getString(1);
-        String email = "E-mail : " + cursor.getString(2);
-        String password = "Password : " + cursor.getString(3);
-        String cookies = "Cookies : " + cursor.getString(6);
+        //String username = "Username : " +cursor.getString(1);
+        String username = getString(R.string.username) + " : " + cursor.getString(1);
+        String email = getString(R.string.email) + " : " + cursor.getString(2);
+        String password = getString(R.string.password) + " : " + cursor.getString(3);
+        String cookies = getString(R.string.cookies) + " : " + cursor.getString(6);
         String Imageavatar = cursor.getString(4);
 
-        String cookie = "Cookie : ";
         String avatar = "Avatar : ";
 
         // Associer chaque information au TextView correspondant

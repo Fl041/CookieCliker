@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cookie Clicker</string>
     <string name="navBar">Retourner à l\'accueil</string>
@@ -10,15 +11,17 @@
     <string name="registerBtn">S\'inscrire</string>
 
     <string name="registerTitle">Créer un compte</string>
-    <string name="usernameTitle">Veuillez saisir un username</string>
+    <string name="usernameTitle">Veuillez saisir un nom d\'utilisateur</string>
     <string name="emailTitle">Veuillez saisir un e-mail</string>
     <string name="passwordTitle">Veuillez saisir un mot de passe</string>
-    <string name="avatar">Veuillez choisir un avatar</string>
-    <string name="username">username</string>
-    <string name="email">e-mail</string>
-    <string name="password">password</string>
-    <string name="chooseBtn">documents</string>
-    <string name="cameraBtn">caméra</string>
+    <string name="avatarTitle">Veuillez choisir un avatar</string>
+    <string name="username">Nom d\'utilisateur</string>
+    <string name="email">E-mail</string>
+    <string name="password">Mot de passe</string>
+    <string name="cookies">Cookies</string>
+    <string name="avatar">Avatar</string>
+    <string name="chooseBtn">Documents</string>
+    <string name="cameraBtn">Camera</string>
 
     <string name="loginTitle">Se connecter</string>
     <string name="loginEmail">Veuillez saisir votre e-mail</string>
@@ -28,17 +31,16 @@
     <string name="accountUpdateBtn">Modifier</string>
 
     <string name="updateTitle">Modifier mon compte</string>
-    <string name="updateUsername">Modifier votre username</string>
+    <string name="updateUsername">Modifier votre nom d\'utilisateur</string>
     <string name="updateEmail">Modifier votre e-mail</string>
     <string name="updatePassword">Modifier votre mot de passe</string>
-    <string name="updateCookie">Modifier votre cookie</string>
     <string name="updateAvatar">Modifier votre avatar</string>
     <string name="saveBtn">Enregistrer</string>
 
     <string name="cookieCount">Cookies : 0</string>
-    <string name="upgradesBtn">Upgrades</string>
-    <string name="title_activity_upgrades">upgrades</string>
+    <string name="upgradesBtn">Améliorations</string>
+    <string name="title_activity_upgrades">améliorations</string>
 
-    <string name="upgradesTitle">Upgrades</string>
-    <string name="cookieBooster">Cookie Booster lv. 1</string>
+    <string name="upgradesTitle">Améliorations</string>
+    <string name="cookieBooster">Booster de Cookies nv. 1</string>
 </resources>

@@ -16,7 +16,9 @@ public class accueil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
+
         AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
+
         Button playBtn = findViewById(R.id.playBtn);
         Button accountBtn = findViewById(R.id.accountBtn);
         Button decoBtn = findViewById(R.id.decoBtn);

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cookie Clicker</string>
+    <string name="navBar">Back to the home page</string>
+    <string name="welcome">Welcome</string>
+    <string name="playBtn">Play</string>
+    <string name="accountBtn">My Account</string>
+
+    <string name="loginBtn">Login</string>
+    <string name="logoutBtn">Logout</string>
+    <string name="registerBtn">Register</string>
+
+    <string name="registerTitle">Create an account</string>
+    <string name="usernameTitle">Please enter a username</string>
+    <string name="emailTitle">Please enter an e-mail</string>
+    <string name="passwordTitle">Please enter a password</string>
+    <string name="avatarTitle">Please choose an avatar</string>
+    <string name="username">Username</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="cookies">Cookies</string>
+    <string name="avatar">Avatar</string>
+    <string name="chooseBtn">Documents</string>
+    <string name="cameraBtn">Camera</string>
+
+    <string name="loginTitle">Login</string>
+    <string name="loginEmail">Please enter your e-mail</string>
+    <string name="loginPassword">Please enter your password</string>
+
+    <string name="accountShowTitle">My account</string>
+    <string name="accountUpdateBtn">Update</string>
+
+    <string name="updateTitle">Update my account</string>
+    <string name="updateUsername">Update my username</string>
+    <string name="updateEmail">Update my e-mail</string>
+    <string name="updatePassword">Update my password</string>
+    <string name="updateAvatar">Update my avatar</string>
+    <string name="saveBtn">Save</string>
+
+    <string name="cookieCount">Cookies : 0</string>
+    <string name="upgradesBtn">Upgrades</string>
+    <string name="title_activity_upgrades">upgrades</string>
+
+    <string name="upgradesTitle">Upgrades</string>
+    <string name="cookieBooster">Cookies Booster lv. 1</string>
+</resources>

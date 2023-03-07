@@ -5,13 +5,9 @@
     <style name="Theme.CookieCliker" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/orange</item>
         <item name="colorPrimaryVariant">@color/orange</item>
-        <!--<item name="colorOnPrimary">@color/red</item>
-        <item name="colorSecondary">@color/red</item>
-        <item name="colorSecondaryVariant">@color/red</item>
-        <item name="colorOnSecondary">@color/red</item>-->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <item name="android:orientation">vertical</item>
+        <item name="android:statusBarColor">@color/orange</item>
         <item name="android:background">@color/cyan</item>
+        <item name="android:orientation">vertical</item>
     </style>
 
 
@@ -146,7 +142,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">20dp</item>
-        <item name="android:layout_marginLeft">50dp</item>
+        <item name="android:layout_marginLeft">25dp</item>
 
         <item name="android:textSize">25sp</item>
         <item name="android:textAllCaps">true</item>
@@ -175,7 +171,7 @@
         <item name="android:layout_marginTop">100dp</item>
         <item name="android:layout_marginLeft">10dp</item>
 
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="switchPadding">25dp</item>
     </style>
 
