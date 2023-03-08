@@ -1,22 +1,22 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.AccountDBHelper.BASE_NOM;
-import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_VERSION;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.myapplication.BasesdeDonnées.AccountDBHelper;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -38,14 +38,17 @@ public class jeu extends AppCompatActivity {
         // Afficher le fragment upgrades après avoir cliqué sur le bouton
         Button upgradesBtn = findViewById(R.id.upgradesBtn);
         FragmentContainerView upgradesFragment = findViewById(R.id.upgradesFragment);
+        //affiche le fragment
         upgradesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 upgradesFragment.setVisibility(View.VISIBLE);
             }
         });
+        // vérifie si l'utilisateur est connecté
         if(dbHelper.isconnected()){
-            Intent ServiceCookie = new Intent(this, com.example.myapplication.ServiceCookie.class);
+            //si c'est le cas il ira chercher les données dans la bd
+            Intent ServiceCookie = new Intent(this, com.example.myapplication.Service.ServiceCookie.class);
             startService(ServiceCookie);
             final Runnable task = new Runnable() {
                 @Override
@@ -56,10 +59,10 @@ public class jeu extends AppCompatActivity {
                     cookieCount.setText("Cookies : " + count);
                 }
             };
-
+            //actualise le nombre de cookies toute les 0.1 seconde
             final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-            executor.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
-
+            executor.scheduleAtFixedRate(task, 0, 100, TimeUnit.MILLISECONDS);
+            // Incrémenter le nombre de cookies dans la bd
            cookie.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -77,6 +80,7 @@ public class jeu extends AppCompatActivity {
             });
         }
         else{
+            //sinon la valeur de cookie est de 0
             count = 0 ;
             cookieCount.setText("Cookies : " + count);
             // bouton upgrade
@@ -92,7 +96,7 @@ public class jeu extends AppCompatActivity {
         }
 
     }
-
+    // permet de revenir à l'accueil
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

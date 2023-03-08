@@ -1,17 +1,12 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.AccountDBHelper.BASE_NOM;
-import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_VERSION;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +19,8 @@ import android.util.Log;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.myapplication.BasesdeDonnées.AccountDBHelper;
 
 public class account_show extends AppCompatActivity {
 
@@ -78,6 +75,7 @@ public class account_show extends AppCompatActivity {
             }
         });
     }
+    //transforme un strind en bitmap
     private Bitmap stringtobitmap(String avatar){
         Bitmap bit = null ;
         try {
@@ -89,7 +87,7 @@ public class account_show extends AppCompatActivity {
         return bit ;
 
     }
-
+    // permet de revenir à l'accueil
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()  == android.R.id.home){

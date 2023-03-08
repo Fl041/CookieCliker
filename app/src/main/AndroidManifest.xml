@@ -16,7 +16,7 @@
         android:theme="@style/Theme.CookieCliker"
         tools:targetApi="31">
         <service
-            android:name=".ServiceCookie"
+            android:name=".Service.ServiceCookie"
             android:enabled="true"
             android:exported="true" >
         </service>

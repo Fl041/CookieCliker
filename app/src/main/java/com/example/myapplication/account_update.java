@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.AccountDBHelper.BASE_NOM;
-import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_VERSION;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -27,8 +27,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.myapplication.BasesdeDonnées.AccountDBHelper;
 
 import java.io.ByteArrayOutputStream;
 
@@ -58,7 +59,7 @@ public class account_update extends AppCompatActivity {
         // Click sur le bouton "ENREGISTRER" qui redirige vers la page de account_show
         Button saveBtn = (Button) findViewById(R.id.saveBtn);
         saveBtn.setOnClickListener(new View.OnClickListener() {
-
+        //renvoie dans la bd les infos (changer ou non)
             @Override
             public void onClick(View view) {
                 String Username = username.getText().toString();
@@ -114,27 +115,27 @@ public class account_update extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Pour les DOCUMENTS
-        //if (resultCode == RESULT_OK && data != null) {
-        if (requestCode == 3) {
-            Uri selectedImg = data.getData();
-            ImageView imageView = findViewById(R.id.avatarImg);
-            imageView.setImageURI(selectedImg);
-            bit = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-            bit = getCircularBitmap(bit);
-            imageView.setImageBitmap(bit);
-        }
+        if (resultCode == RESULT_OK && data != null) {
+            if (requestCode == 3) {
+                Uri selectedImg = data.getData();
+                ImageView imageView = findViewById(R.id.avatarImg);
+                imageView.setImageURI(selectedImg);
+                bit = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                bit = getCircularBitmap(bit);
+                imageView.setImageBitmap(bit);
+            }
 
-        // Pour la CAMERA
-        if (requestCode == 100) {
-            bit = (Bitmap) data.getExtras().get("data");
-            bit = getCircularBitmap(bit);
-            ImageView avatarImgCamera = findViewById(R.id.avatarImg);
-            avatarImgCamera.setImageBitmap(bit);
+            // Pour la CAMERA
+            if (requestCode == 100) {
+                bit = (Bitmap) data.getExtras().get("data");
+                bit = getCircularBitmap(bit);
+                ImageView avatarImgCamera = findViewById(R.id.avatarImg);
+                avatarImgCamera.setImageBitmap(bit);
+            }
         }
-
 
     }
-
+    //transforme un strind en bitmap
     private Bitmap stringtobitmap(String avatar) {
         Bitmap bit = null;
         try {
@@ -146,26 +147,26 @@ public class account_update extends AppCompatActivity {
         return bit;
 
     }
-
+    //transforme la bitmap de l'avatar en string
     private String bitmaptoString(Bitmap bit) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bit.compress(Bitmap.CompressFormat.PNG, 50, stream);
         byte[] byte_Array = stream.toByteArray();
         return Base64.encodeToString(byte_Array, 0);
     }
-
+    //vérifie si l'email est valide
     boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
-
+    //vérifie si le text n'est pas vide
     boolean isValid(CharSequence text) {
         return !text.equals("");
     }
-
+    // vérifie si l'image n'est pas vide
     boolean ImageValid(String avatar) {
         return !avatar.equals("");
     }
-
+    // envoie un message d'erreur selon l'erreur détectée
     void toast(String champs) {
         if (champs.equals("Email")) {
             Toast.makeText(this, "Email invalide", Toast.LENGTH_LONG).show();
@@ -177,6 +178,7 @@ public class account_update extends AppCompatActivity {
         Toast.makeText(this, "Le username et le password ne peuvent pas être vide", Toast.LENGTH_LONG).show();
 
     }
+    // arondie l'avatar
     public static Bitmap getCircularBitmap(Bitmap bitmap) {
         Bitmap output;
 

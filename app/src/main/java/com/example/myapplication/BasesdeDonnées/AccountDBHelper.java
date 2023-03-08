@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.BasesdeDonnées;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -66,7 +66,7 @@ public class AccountDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(REQUETE_CREATION_BD);
     }
-
+    // insere les données lors de la création
     public void insertData(String username, String email, String password,String avatar) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -82,14 +82,14 @@ public class AccountDBHelper extends SQLiteOpenHelper {
         db.insert(TABLE_ACCOUNTS, null, values);
         db.close();
     }
-
+    // renvoie toute les informations du compte connecté
     public Cursor showconnectedaccount() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_ACCOUNTS+" WHERE "
                 +COLONNE_ISCONNECTED + "= true", null);
         return cursor;
     }
-
+    // permet de savoir si un compte est connecté ou non
     public boolean isconnected(){
         SQLiteDatabase db = this.getReadableDatabase();
         boolean result = false;
@@ -102,7 +102,7 @@ public class AccountDBHelper extends SQLiteOpenHelper {
         }
         return result ;
     }
-
+    // savoir lors du login que les identifiants entrés correspondent à un utilisateur
     public boolean existe(String email, String password){
         SQLiteDatabase db = this.getReadableDatabase();
         boolean result = false;
@@ -123,7 +123,7 @@ public class AccountDBHelper extends SQLiteOpenHelper {
         // Création de la nouvelle structure.
         onCreate(db);
     }
-
+    // connecte un compte via l'email et le password
     public void Connected(String email , String password){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -131,14 +131,14 @@ public class AccountDBHelper extends SQLiteOpenHelper {
         db.update(TABLE_ACCOUNTS,values , COLONNE_EMAIL +" = '" +email +"' and " + COLONNE_PASSWORD +
                 " = '" + password +"'" , null  );
     }
-
+    // déconnecte le compte connecté
     public void Disconnect(){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLONNE_ISCONNECTED,false);
         db.update(TABLE_ACCOUNTS,values ,COLONNE_ISCONNECTED + "= " +"true"  , null );
     }
-
+    // modifie les informations du compte lors de la modification du compte
     public void updateAccount(String username, String email , String password, String avatar){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -148,21 +148,21 @@ public class AccountDBHelper extends SQLiteOpenHelper {
         values.put(COLONNE_AVATAR, String.valueOf(avatar));
         db.update(TABLE_ACCOUNTS,values , COLONNE_ISCONNECTED + "= " +"true" , null  );
     }
-
+    // update le nombre de cookie pour l'utilisateur connecté dans la bd
     public void updatenbcookies(int nbcookies){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLONNE_Cookies, nbcookies);
         db.update(TABLE_ACCOUNTS,values , COLONNE_ISCONNECTED + "= " +"true" , null  );
     }
-
+    // permet d'activé cookie booster pour le compte connecté
     public void updateupgrade1true(){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLONNE_UPGRADE1, true);
         db.update(TABLE_ACCOUNTS,values , COLONNE_ISCONNECTED + "= " +"true" , null  );
     }
-
+    // permet désactivé cookie booster pour le compte connecté
     public void updateupgrade1false(){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
