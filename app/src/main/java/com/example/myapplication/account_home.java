@@ -37,7 +37,7 @@ public class account_home extends AppCompatActivity {
             }
         });
     }
-
+    // permet de revenir à l'accueil
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()  == android.R.id.home){

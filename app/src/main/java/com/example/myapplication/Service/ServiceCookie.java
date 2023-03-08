@@ -1,18 +1,16 @@
-package com.example.myapplication;
+package com.example.myapplication.Service;
 
-import static com.example.myapplication.AccountDBHelper.BASE_NOM;
-import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_VERSION;
 
 import android.app.IntentService;
-import android.app.Service;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import com.example.myapplication.BasesdeDonnées.AccountDBHelper;
 
 public class ServiceCookie extends IntentService {
     AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
@@ -29,6 +27,7 @@ public class ServiceCookie extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
+        // temps que l'utilisateur est connecté son nombre de cookie augmentera de 1 toute les 5 secondes
         while (dbHelper.isconnected()) {
             synchronized (this) {
                 try {

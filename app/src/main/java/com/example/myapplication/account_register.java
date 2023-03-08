@@ -1,19 +1,16 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.AccountDBHelper.BASE_NOM;
-import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_VERSION;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.PackageManagerCompat;
 
 import android.content.Intent;
 
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -24,9 +21,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.util.Base64;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -35,11 +30,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.myapplication.BasesdeDonnées.AccountDBHelper;
+
 import java.io.ByteArrayOutputStream;
 
-public class account_register<selectedImg> extends AppCompatActivity {
+public class account_register extends AppCompatActivity {
 
-    ImageView avatarImg;
     Bitmap bit;
 
     @Override
@@ -61,7 +57,7 @@ public class account_register<selectedImg> extends AppCompatActivity {
         // Click sur le bouton "S'INSCRIRE" qui redirige vers la page de connexion
         Button registerBtn = (Button) findViewById(R.id.registerBtn);
         registerBtn.setOnClickListener(new View.OnClickListener() {
-
+        //insere les données s'ils sont valides dans le bd
             @Override
             public void onClick(View view) {
                 String Username = username.getText().toString();
@@ -124,7 +120,7 @@ public class account_register<selectedImg> extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Pour les DOCUMENTS
-       // if (resultCode == RESULT_OK && data != null) {
+        if (resultCode == RESULT_OK && data != null) {
             if (requestCode == 3) {
                 Uri selectedImg = data.getData();
                 ImageView imageView = findViewById(R.id.avatarImg);
@@ -141,10 +137,10 @@ public class account_register<selectedImg> extends AppCompatActivity {
                 ImageView avatarImgCamera = findViewById(R.id.avatarImg);
                 avatarImgCamera.setImageBitmap(bit);
             }
-     //   }
+        }
 
     }
-
+    //transforme la bitmap de l'avatar en string
     private String bitmaptoString(Bitmap bit) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bit.compress(Bitmap.CompressFormat.PNG, 50, stream);
@@ -152,19 +148,19 @@ public class account_register<selectedImg> extends AppCompatActivity {
         return Base64.encodeToString(byte_Array, 0);
     }
 
-
+    //vérifie si l'email est valide
     boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
-
+    //vérifie si le text n'est pas vide
     boolean isValid(CharSequence text) {
         return !text.equals("");
     }
-
+    // vérifie si l'image n'est pas vide
     boolean ImageValid(String avatar) {
         return !avatar.equals("");
     }
-
+    // envoie un message d'erreur selon l'erreur détectée
     void toast(String champs) {
         if (champs.equals("Email")) {
             Toast.makeText(this, "Email invalide", Toast.LENGTH_LONG).show();
@@ -176,7 +172,7 @@ public class account_register<selectedImg> extends AppCompatActivity {
         Toast.makeText(this, "Le username et le password ne peuvent pas être vide", Toast.LENGTH_LONG).show();
 
     }
-
+    // permet de revenir à l'accueil
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -185,7 +181,7 @@ public class account_register<selectedImg> extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    // arondie l'avatar
     public static Bitmap getCircularBitmap(Bitmap bitmap) {
         Bitmap output;
 

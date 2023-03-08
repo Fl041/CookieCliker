@@ -1,14 +1,16 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.AccountDBHelper.BASE_NOM;
-import static com.example.myapplication.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_VERSION;
+
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.myapplication.BasesdeDonnées.AccountDBHelper;
 
 public class accueil extends AppCompatActivity {
 
@@ -22,7 +24,9 @@ public class accueil extends AppCompatActivity {
         Button playBtn = findViewById(R.id.playBtn);
         Button accountBtn = findViewById(R.id.accountBtn);
         Button decoBtn = findViewById(R.id.decoBtn);
+        //gère le visibilité du bouton déconnecté
         Visibilitybouton(decoBtn);
+        //gère l'action réalisé pour le bouton mon compte
         Setfonction(accountBtn);
         // Aller au layout jeu en cliquant sur le bouton "JOUER"
         playBtn.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +48,7 @@ public class accueil extends AppCompatActivity {
         );
 
     }
-
+        // si l'utilisateur le bouton sera visible pour sa décoonecté sinon il sera invisible
         public void Visibilitybouton(Button button){
             AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
             boolean isconnected = dbHelper.isconnected();
@@ -56,6 +60,7 @@ public class accueil extends AppCompatActivity {
                 button.setVisibility(View.VISIBLE);
             }
         }
+        //si l'utilisateur est connecté il pour avoir accès aux info de son compte sinon il aura le choix de se connecter ou de s'inscrire
         public void Setfonction(Button button){
             AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
             boolean isconnected = dbHelper.isconnected();
