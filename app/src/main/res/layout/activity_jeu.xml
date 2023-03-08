@@ -18,6 +18,7 @@
                 style="@style/cookieCount"
                 android:text="@string/cookieCount" />
 
+
             <ImageView
                 android:id="@+id/cookie"
                 style="@style/cookie"

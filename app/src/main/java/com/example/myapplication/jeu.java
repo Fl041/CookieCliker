@@ -41,14 +41,12 @@ public class jeu extends AppCompatActivity {
         // Afficher le fragment upgrades après avoir cliqué sur le bouton
         Button upgradesBtn = findViewById(R.id.upgradesBtn);
         FragmentContainerView upgradesFragment = findViewById(R.id.upgradesFragment);
-
         upgradesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 upgradesFragment.setVisibility(View.VISIBLE);
             }
         });
-
         if(dbHelper.isconnected()){
             Intent ServiceCookie = new Intent(this, com.example.myapplication.ServiceCookie.class);
             startService(ServiceCookie);
@@ -65,7 +63,7 @@ public class jeu extends AppCompatActivity {
             final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
             executor.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
 
-            cookie.setOnClickListener(new View.OnClickListener() {
+           cookie.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Cursor cursor = dbHelper.showconnectedaccount() ;
@@ -95,11 +93,12 @@ public class jeu extends AppCompatActivity {
                 }
             });
         }
+
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()  == android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             Intent intent = new Intent(getApplicationContext(), accueil.class);
             startActivity(intent);
         }

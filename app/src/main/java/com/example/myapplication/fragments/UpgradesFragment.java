@@ -95,8 +95,11 @@ public class UpgradesFragment extends Fragment {
             Cursor cursor = dbHelper.showconnectedaccount();
             cursor.moveToFirst();
             SwitchCompat switchbutton = (SwitchCompat) view.findViewById(R.id.customSwitch);
+            TextView alert = view.findViewById(R.id.alert);
             if (cursor.getString(7).equals("1")) switchbutton.setChecked(true);
-            if(Integer.parseInt(cursor.getString(6) )< 30)switchbutton.setVisibility(View.INVISIBLE) ;
+            if(Integer.parseInt(cursor.getString(6) )< 30)switchbutton.setClickable(false) ;
+            else{
+            alert.setText("");
             switchbutton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -106,7 +109,7 @@ public class UpgradesFragment extends Fragment {
                         dbHelper.updateupgrade1false();
                     }
                 }
-            });
+            });}
         }
         return view; }
 }

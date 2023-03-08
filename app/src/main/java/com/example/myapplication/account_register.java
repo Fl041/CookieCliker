@@ -124,24 +124,24 @@ public class account_register<selectedImg> extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Pour les DOCUMENTS
-        //if (resultCode == RESULT_OK && data != null) {
-        if (requestCode == 3) {
-            Uri selectedImg = data.getData();
-            ImageView imageView = findViewById(R.id.avatarImg);
-            imageView.setImageURI(selectedImg);
-            bit = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-            bit = getCircularBitmap(bit);
-            imageView.setImageBitmap(bit);
-        }
+       // if (resultCode == RESULT_OK && data != null) {
+            if (requestCode == 3) {
+                Uri selectedImg = data.getData();
+                ImageView imageView = findViewById(R.id.avatarImg);
+                imageView.setImageURI(selectedImg);
+                bit = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                bit = getCircularBitmap(bit);
+                imageView.setImageBitmap(bit);
+            }
 
-        // Pour la CAMERA
-        if (requestCode == 100) {
-            bit = (Bitmap) data.getExtras().get("data");
-            bit = getCircularBitmap(bit);
-            ImageView avatarImgCamera = findViewById(R.id.avatarImg);
-            avatarImgCamera.setImageBitmap(bit);
-        }
-
+            // Pour la CAMERA
+            if (requestCode == 100) {
+                bit = (Bitmap) data.getExtras().get("data");
+                bit = getCircularBitmap(bit);
+                ImageView avatarImgCamera = findViewById(R.id.avatarImg);
+                avatarImgCamera.setImageBitmap(bit);
+            }
+     //   }
 
     }
 

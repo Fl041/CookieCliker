@@ -178,6 +178,11 @@
 
     <!-- Style pour les messages d'alerte -->
     <style name="alertMessage">
-        <item name="color">@color/red</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">200dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:background">@color/white</item>
     </style>
 </resources>
