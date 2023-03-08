@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_NOM;
-import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.DataBase.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.DataBase.AccountDBHelper.BASE_VERSION;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -29,7 +29,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.myapplication.BasesdeDonnées.AccountDBHelper;
+import com.example.myapplication.DataBase.AccountDBHelper;
 
 import java.io.ByteArrayOutputStream;
 
@@ -67,15 +67,19 @@ public class account_update extends AppCompatActivity {
                 String Password = password.getText().toString();
                 bit = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
                 String avatar = bitmaptoString(bit);
+
                 if (!isEmailValid(Email)) {
                     toast("Email");
-                } else if (!(isValid(Username) && isValid(Password))) {
-                    toast("username ou password");
+                } else if (!isValid(Username)) {
+                    toast("Username");
+                } else if (!isValid(Password)) {
+                    toast("Password");
                 } else if (!ImageValid(avatar)) {
-                    toast("Avatar");
+                    toast("avatar");
                 } else {
                     dbHelper.updateAccount(Username, Email, Password, avatar);
-                    Toast.makeText(account_update.this, "Account has been updated.", Toast.LENGTH_SHORT).show();
+                    String updateToast = getString(R.string.updateToast);
+                    Toast.makeText(account_update.this, updateToast, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), account_show.class);
                     startActivity(intent);
                 }
@@ -162,22 +166,35 @@ public class account_update extends AppCompatActivity {
     boolean isValid(CharSequence text) {
         return !text.equals("");
     }
+
     // vérifie si l'image n'est pas vide
     boolean ImageValid(String avatar) {
         return !avatar.equals("");
     }
+
     // envoie un message d'erreur selon l'erreur détectée
     void toast(String champs) {
-        if (champs.equals("Email")) {
-            Toast.makeText(this, "Email invalide", Toast.LENGTH_LONG).show();
-        } else if (champs.equals("Avatar")) {
-            Toast.makeText(this, "Image invalide", Toast.LENGTH_LONG).show();
+
+        if (champs.equals("Username")) {
+            String usernameToast = getString(R.string.usernameToast);
+            Toast.makeText(this, usernameToast, Toast.LENGTH_LONG).show();
+
+        } else if (champs.equals("Email")) {
+            String emailToast = getString(R.string.emailToast);
+            Toast.makeText(this, emailToast, Toast.LENGTH_LONG).show();
+
+        } else if (champs.equals("Password")){
+            String passwordToast = getString(R.string.passwordToast);
+            Toast.makeText(this, passwordToast, Toast.LENGTH_LONG).show();
+
         } else {
+            String avatarToast = getString(R.string.avatarToast);
+            Toast.makeText(this, avatarToast, Toast.LENGTH_LONG).show();
 
         }
-        Toast.makeText(this, "Le username et le password ne peuvent pas être vide", Toast.LENGTH_LONG).show();
 
     }
+
     // arondie l'avatar
     public static Bitmap getCircularBitmap(Bitmap bitmap) {
         Bitmap output;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
+    android:layout_width="325dp"
     android:layout_height="800dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.UpgradesFragment"
@@ -26,6 +26,6 @@
     <TextView
         style="@style/alertMessage"
         android:id="@+id/alert"
-        android:text="Vous ne pouvez pas utiliser cookie booster avant d'avoir 30 cookies" />
+        android:text="@string/alertMessage" />
 
 </FrameLayout>
