@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        style="@style/titre"
-        android:text="@string/welcome" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        style="@style/button"
-        android:id="@+id/playBtn"
-        android:text="@string/playBtn" />
+        <TextView
+            style="@style/titre"
+            android:text="@string/welcome" />
 
-    <Button
-        style="@style/button"
-        android:id="@+id/accountBtn"
-        android:text="@string/accountBtn" />
+        <Button
+            android:id="@+id/playBtn"
+            style="@style/button"
+            android:text="@string/playBtn" />
 
-    <Button
-        style="@style/button"
-        android:id="@+id/decoBtn"
-        android:text="@string/logoutBtn" />
+        <Button
+            android:id="@+id/accountBtn"
+            style="@style/button"
+            android:text="@string/accountBtn" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/decoBtn"
+            style="@style/button"
+            android:text="@string/logoutBtn" />
+
+    </LinearLayout>
+
+</ScrollView>

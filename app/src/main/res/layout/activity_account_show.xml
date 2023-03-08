@@ -1,74 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        style="@style/titre"
-        android:text="@string/accountShowTitle" />
-
-    <!--<FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            style="@style/accountShowBackground"
-            android:src="@drawable/account_show_background" />-->
-
-    <TextView
-        android:id="@+id/usernameShow"
-        style="@style/accountShow"
-        android:layout_marginTop="0dp" />
-
-    <TextView
-        android:id="@+id/emailShow"
-        style="@style/accountShow" />
-
-    <TextView
-        android:id="@+id/passwordShow"
-        style="@style/accountShow" />
-
-    <TextView
-        android:id="@+id/cookiesnb"
-        style="@style/accountShow" />
-    <!--</FrameLayout>-->
-
-    <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/avatarShow"
-            style="@style/accountShow" />
+            style="@style/titre"
+            android:text="@string/accountShowTitle" />
 
-        <ImageView
-            android:id="@+id/avatarImg"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/circle" />
-    </TableRow>
+        <!--<FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <!--<TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+            <ImageView
+                style="@style/accountShowBackground"
+                android:src="@drawable/account_show_background" />-->
 
         <TextView
-            android:id="@+id/cookieShow"
+            android:id="@+id/usernameShow"
+            style="@style/accountShow"
+            android:layout_marginTop="0dp" />
+
+        <TextView
+            android:id="@+id/emailShow"
             style="@style/accountShow" />
 
-        <ImageView
-            android:id="@+id/cookieImg"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/circle" />
-    </TableRow>-->
+        <TextView
+            android:id="@+id/passwordShow"
+            style="@style/accountShow" />
 
-    <Button
-        android:id="@+id/accountUpdateBtn"
-        style="@style/button"
-        android:text="@string/accountUpdateBtn" />
+        <TextView
+            android:id="@+id/cookiesnb"
+            style="@style/accountShow" />
+        <!--</FrameLayout>-->
 
-</LinearLayout>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/avatarShow"
+                style="@style/accountShow" />
+
+            <ImageView
+                android:id="@+id/avatarImg"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/circle" />
+        </TableRow>
+
+        <!--<TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/cookieShow"
+                style="@style/accountShow" />
+
+            <ImageView
+                android:id="@+id/cookieImg"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/circle" />
+        </TableRow>-->
+
+        <Button
+            android:id="@+id/accountUpdateBtn"
+            style="@style/button"
+            android:text="@string/accountUpdateBtn" />
+
+    </LinearLayout>
+
+</ScrollView>

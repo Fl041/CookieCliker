@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/cookieCount"
-        style="@style/cookieCount"
-        android:text="@string/cookieCount" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/cookie"
-            style="@style/cookie"
-            android:src="@drawable/cookie" />
+            <TextView
+                android:id="@+id/cookieCount"
+                style="@style/cookieCount"
+                android:text="@string/cookieCount" />
 
 
-    <Button
-        android:id="@+id/upgradesBtn"
-        style="@style/button"
-        android:text="@string/upgradesBtn" />
+            <ImageView
+                android:id="@+id/cookie"
+                style="@style/cookie"
+                android:src="@drawable/cookie" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/upgradesBtn"
+                style="@style/button"
+                android:text="@string/upgradesBtn" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/upgradesFragment"
-        style="@style/upgradesFragment" />
+        </LinearLayout>
 
-</RelativeLayout>
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/upgradesFragment"
+            style="@style/upgradesFragment" />
+
+    </RelativeLayout>
+
+</ScrollView>
