@@ -1,7 +1,7 @@
 package com.example.myapplication.fragments;
 
-import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_NOM;
-import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.DataBase.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.DataBase.AccountDBHelper.BASE_VERSION;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,7 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.myapplication.BasesdeDonnées.AccountDBHelper;
+import com.example.myapplication.DataBase.AccountDBHelper;
 import com.example.myapplication.R;
 import com.example.myapplication.jeu;
 

@@ -15,13 +15,21 @@
     <string name="emailTitle">Veuillez saisir un e-mail</string>
     <string name="passwordTitle">Veuillez saisir un mot de passe</string>
     <string name="avatarTitle">Veuillez choisir un avatar</string>
-    <string name="username">Nom d\'utilisateur</string>
-    <string name="email">E-mail</string>
-    <string name="password">Mot de passe</string>
+    <string name="username">nom d\'utilisateur</string>
+    <string name="email">e-mail</string>
+    <string name="password">mot de passe</string>
     <string name="cookies">Cookies</string>
     <string name="avatar">Avatar</string>
     <string name="chooseBtn">Documents</string>
     <string name="cameraBtn">Camera</string>
+
+    <string name="usernameToast">nom d\'utilisateur invalide</string>
+    <string name="emailToast">e-mail invalide</string>
+    <string name="passwordToast">mot de passe invalide</string>
+    <string name="avatarToast">avatar invalide</string>
+    <string name="registerToast">Compte créé avec succès</string>
+    <string name="loginToast">Connexion réussie</string>
+    <string name="updateToast">Compte modifié avec succès</string>
 
     <string name="loginTitle">Se connecter</string>
     <string name="loginEmail">Veuillez saisir votre e-mail</string>
@@ -43,4 +51,5 @@
 
     <string name="upgradesTitle">Améliorations</string>
     <string name="cookieBooster">Booster de Cookies nv. 1</string>
+    <string name="alertMessage">Vous devez atteindre 30 cookies pour utiliser cette amélioration</string>
 </resources>

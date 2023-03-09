@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_NOM;
-import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.DataBase.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.DataBase.AccountDBHelper.BASE_VERSION;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.myapplication.BasesdeDonnées.AccountDBHelper;
+import com.example.myapplication.DataBase.AccountDBHelper;
 
 public class accueil extends AppCompatActivity {
 

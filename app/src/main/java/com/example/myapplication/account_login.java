@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_NOM;
-import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.DataBase.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.DataBase.AccountDBHelper.BASE_VERSION;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.myapplication.BasesdeDonnées.AccountDBHelper;
+import com.example.myapplication.DataBase.AccountDBHelper;
 
 public class account_login extends AppCompatActivity {
 
@@ -37,16 +37,21 @@ public class account_login extends AppCompatActivity {
             public void onClick(View view) {
                 String email = getEmail.getText().toString();
                 String password = getPassword.getText().toString();
+
                 // vérifie si le compte existe si c'est le cas il le connecte
-               if(dbHelper.existe(email, password )){
+                if(dbHelper.existe(email, password )){
                     dbHelper.Disconnect();
                     dbHelper.Connected(email,password);
-                    Toast.makeText(account_login.this, "Account has been connected.", Toast.LENGTH_SHORT).show();
+
+                    String loginToast = getString(R.string.loginToast);
+                    Toast.makeText(account_login.this, loginToast, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), account_show.class);
                     startActivity(intent);
                 }
-                else{
-                    Toast.makeText(account_login.this, "Email ou mot de passe incorrect", Toast.LENGTH_SHORT).show();
+                else {
+                    String emailToast = getString(R.string.emailToast);
+                    String passwordToast = getString(R.string.passwordToast);
+                    Toast.makeText(account_login.this, emailToast + " / " + passwordToast, Toast.LENGTH_SHORT).show();
                 }
 
             }

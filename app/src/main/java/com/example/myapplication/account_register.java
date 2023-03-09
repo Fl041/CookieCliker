@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_NOM;
-import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.DataBase.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.DataBase.AccountDBHelper.BASE_VERSION;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +30,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.myapplication.BasesdeDonnées.AccountDBHelper;
+import com.example.myapplication.DataBase.AccountDBHelper;
 
 import java.io.ByteArrayOutputStream;
 
@@ -57,19 +57,22 @@ public class account_register extends AppCompatActivity {
         // Click sur le bouton "S'INSCRIRE" qui redirige vers la page de connexion
         Button registerBtn = (Button) findViewById(R.id.registerBtn);
         registerBtn.setOnClickListener(new View.OnClickListener() {
-        //insere les données s'ils sont valides dans le bd
+            //insere les données s'ils sont valides dans le bd
             @Override
             public void onClick(View view) {
                 String Username = username.getText().toString();
                 String Email = email.getText().toString();
                 String Password = password.getText().toString();
                 String avatar = bitmaptoString(bit);
+
                 if (!isEmailValid(Email)) {
                     toast("Email");
-                } else if (!(isValid(Username) && isValid(Password))) {
-                    toast("username ou password");
+                } else if (!isValid(Username)) {
+                    toast("Username");
+                } else if (!isValid(Password)) {
+                    toast("Password");
                 } else if (!ImageValid(avatar)) {
-                    toast("Avatar");
+                    toast("avatar");
                 } else {
                     dbHelper.insertData(Username, Email, Password, avatar);
                     username.setText("");
@@ -77,7 +80,8 @@ public class account_register extends AppCompatActivity {
                     password.setText("");
                     imageView.setImageURI(null);
 
-                    Toast.makeText(account_register.this, "Account has been added.", Toast.LENGTH_SHORT).show();
+                    String registerToast = getString(R.string.registerToast);
+                    Toast.makeText(account_register.this, registerToast, Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(getApplicationContext(), account_login.class);
                     startActivity(intent);
@@ -101,7 +105,7 @@ public class account_register extends AppCompatActivity {
         // Demande d'autorisation d'exécution de la caméra
         if (ContextCompat.checkSelfPermission(account_register.this, android.Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(account_register.this, new String[] {
+            ActivityCompat.requestPermissions(account_register.this, new String[]{
                     android.Manifest.permission.CAMERA
             }, 100);
         }
@@ -140,6 +144,7 @@ public class account_register extends AppCompatActivity {
         }
 
     }
+
     //transforme la bitmap de l'avatar en string
     private String bitmaptoString(Bitmap bit) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -152,26 +157,40 @@ public class account_register extends AppCompatActivity {
     boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
+
     //vérifie si le text n'est pas vide
     boolean isValid(CharSequence text) {
         return !text.equals("");
     }
+
     // vérifie si l'image n'est pas vide
     boolean ImageValid(String avatar) {
         return !avatar.equals("");
     }
+
     // envoie un message d'erreur selon l'erreur détectée
     void toast(String champs) {
-        if (champs.equals("Email")) {
-            Toast.makeText(this, "Email invalide", Toast.LENGTH_LONG).show();
-        } else if (champs.equals("Avatar")) {
-            Toast.makeText(this, "Image invalide", Toast.LENGTH_LONG).show();
+
+        if (champs.equals("Username")) {
+            String usernameToast = getString(R.string.usernameToast);
+            Toast.makeText(this, usernameToast, Toast.LENGTH_LONG).show();
+
+        } else if (champs.equals("Email")) {
+            String emailToast = getString(R.string.emailToast);
+            Toast.makeText(this, emailToast, Toast.LENGTH_LONG).show();
+
+        } else if (champs.equals("Password")){
+            String passwordToast = getString(R.string.passwordToast);
+            Toast.makeText(this, passwordToast, Toast.LENGTH_LONG).show();
+
         } else {
+            String avatarToast = getString(R.string.avatarToast);
+            Toast.makeText(this, avatarToast, Toast.LENGTH_LONG).show();
 
         }
-        Toast.makeText(this, "Le username et le password ne peuvent pas être vide", Toast.LENGTH_LONG).show();
 
     }
+
     // permet de revenir à l'accueil
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -181,6 +200,7 @@ public class account_register extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     // arondie l'avatar
     public static Bitmap getCircularBitmap(Bitmap bitmap) {
         Bitmap output;

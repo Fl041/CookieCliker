@@ -1,7 +1,7 @@
 package com.example.myapplication.Service;
 
-import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_NOM;
-import static com.example.myapplication.BasesdeDonnées.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.DataBase.AccountDBHelper.BASE_NOM;
+import static com.example.myapplication.DataBase.AccountDBHelper.BASE_VERSION;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
-import com.example.myapplication.BasesdeDonnées.AccountDBHelper;
+import com.example.myapplication.DataBase.AccountDBHelper;
 
 public class ServiceCookie extends IntentService {
     AccountDBHelper dbHelper = new AccountDBHelper(this, BASE_NOM, null, BASE_VERSION);
