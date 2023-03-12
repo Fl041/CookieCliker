@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import static com.example.myapplication.DataBase.AccountDBHelper.BASE_NOM;
 import static com.example.myapplication.DataBase.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.Fonctions.fonctions.stringtobitmap;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,11 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
-import android.util.Log;
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -74,18 +70,6 @@ public class account_show extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-    //transforme un strind en bitmap
-    private Bitmap stringtobitmap(String avatar){
-        Bitmap bit = null ;
-        try {
-            byte[] decodeString = Base64.decode(avatar , Base64.DEFAULT) ;
-            bit = BitmapFactory.decodeByteArray(decodeString , 0 , decodeString.length);
-        }catch(Exception e){
-            Log.d("Exception", "image error");
-        }
-        return bit ;
-
     }
     // permet de revenir à l'accueil
     @Override

@@ -2,6 +2,12 @@ package com.example.myapplication;
 
 import static com.example.myapplication.DataBase.AccountDBHelper.BASE_NOM;
 import static com.example.myapplication.DataBase.AccountDBHelper.BASE_VERSION;
+import static com.example.myapplication.Fonctions.fonctions.ImageValid;
+import static com.example.myapplication.Fonctions.fonctions.bitmaptoString;
+import static com.example.myapplication.Fonctions.fonctions.getCircularBitmap;
+import static com.example.myapplication.Fonctions.fonctions.isEmailValid;
+import static com.example.myapplication.Fonctions.fonctions.isValid;
+import static com.example.myapplication.Fonctions.fonctions.toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,16 +18,10 @@ import android.content.Intent;
 
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +32,6 @@ import android.widget.Toast;
 
 import com.example.myapplication.DataBase.AccountDBHelper;
 
-import java.io.ByteArrayOutputStream;
 
 public class account_register extends AppCompatActivity {
 
@@ -64,15 +63,14 @@ public class account_register extends AppCompatActivity {
                 String Email = email.getText().toString();
                 String Password = password.getText().toString();
                 String avatar = bitmaptoString(bit);
-
                 if (!isEmailValid(Email)) {
-                    toast("Email");
+                    toast("Email" , getApplicationContext());
                 } else if (!isValid(Username)) {
-                    toast("Username");
+                    toast("Username", getApplicationContext());
                 } else if (!isValid(Password)) {
-                    toast("Password");
+                    toast("Password", getApplicationContext());
                 } else if (!ImageValid(avatar)) {
-                    toast("avatar");
+                    toast("avatar", getApplicationContext());
                 } else {
                     dbHelper.insertData(Username, Email, Password, avatar);
                     username.setText("");
@@ -144,53 +142,6 @@ public class account_register extends AppCompatActivity {
         }
 
     }
-
-    //transforme la bitmap de l'avatar en string
-    private String bitmaptoString(Bitmap bit) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bit.compress(Bitmap.CompressFormat.PNG, 50, stream);
-        byte[] byte_Array = stream.toByteArray();
-        return Base64.encodeToString(byte_Array, 0);
-    }
-
-    //vérifie si l'email est valide
-    boolean isEmailValid(CharSequence email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    //vérifie si le text n'est pas vide
-    boolean isValid(CharSequence text) {
-        return !text.equals("");
-    }
-
-    // vérifie si l'image n'est pas vide
-    boolean ImageValid(String avatar) {
-        return !avatar.equals("");
-    }
-
-    // envoie un message d'erreur selon l'erreur détectée
-    void toast(String champs) {
-
-        if (champs.equals("Username")) {
-            String usernameToast = getString(R.string.usernameToast);
-            Toast.makeText(this, usernameToast, Toast.LENGTH_LONG).show();
-
-        } else if (champs.equals("Email")) {
-            String emailToast = getString(R.string.emailToast);
-            Toast.makeText(this, emailToast, Toast.LENGTH_LONG).show();
-
-        } else if (champs.equals("Password")){
-            String passwordToast = getString(R.string.passwordToast);
-            Toast.makeText(this, passwordToast, Toast.LENGTH_LONG).show();
-
-        } else {
-            String avatarToast = getString(R.string.avatarToast);
-            Toast.makeText(this, avatarToast, Toast.LENGTH_LONG).show();
-
-        }
-
-    }
-
     // permet de revenir à l'accueil
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -201,36 +152,4 @@ public class account_register extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // arondie l'avatar
-    public static Bitmap getCircularBitmap(Bitmap bitmap) {
-        Bitmap output;
-
-        if (bitmap.getWidth() > bitmap.getHeight()) {
-            output = Bitmap.createBitmap(bitmap.getHeight(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-        } else {
-            output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getWidth(), Bitmap.Config.ARGB_8888);
-        }
-
-        Canvas canvas = new Canvas(output);
-
-        final int color = 0xff424242;
-        final Paint paint = new Paint();
-        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-
-        float r = 0;
-
-        if (bitmap.getWidth() > bitmap.getHeight()) {
-            r = bitmap.getHeight() / 2;
-        } else {
-            r = bitmap.getWidth() / 2;
-        }
-
-        paint.setAntiAlias(true);
-        canvas.drawARGB(0, 0, 0, 0);
-        paint.setColor(color);
-        canvas.drawCircle(r, r, r, paint);
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        canvas.drawBitmap(bitmap, rect, rect, paint);
-        return output;
-    }
 }
