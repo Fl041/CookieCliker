@@ -21,8 +21,7 @@
 
             <ImageView
                 android:id="@+id/cookie"
-                style="@style/cookie"
-                android:src="@drawable/cookie" />
+                style="@style/cookie" />
 
             <Button
                 android:id="@+id/upgradesBtn"

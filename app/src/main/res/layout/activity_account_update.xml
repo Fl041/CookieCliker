@@ -52,8 +52,7 @@
 
             <ImageView
                 android:id="@+id/avatarImg"
-                style="@style/chooseImg"
-                android:src="@drawable/circle" />
+                style="@style/chooseImg" />
 
             <Button
                 android:id="@+id/avatarBtn"
@@ -62,8 +61,7 @@
 
             <Button
                 android:id="@+id/avatarBtnCamera"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="25dp"
+                style="@style/avatarBtnCamera"
                 android:text="@string/cameraBtn" />
         </TableRow>
 

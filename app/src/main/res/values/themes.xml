@@ -69,7 +69,14 @@
     </style>
 
 
-    <!-- Style pour l'ImageView de l'avatar et/ou du cookie -->
+    <!-- Style pour le avatarBtnCamera -->
+    <style name="avatarBtnCamera">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">25dp</item>
+    </style>
+
+
+    <!-- Style pour l'ImageView de l'avatar -->
     <style name="chooseImg">
         <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">80dp</item>
@@ -77,6 +84,8 @@
         <item name="android:layout_marginRight">20dp</item>
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:layout_marginTop">5dp</item>
+        <item name="android:src">@drawable/circle</item>
+        <item name="android:background">@color/transparent</item>
     </style>
 
 
@@ -90,16 +99,19 @@
 
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/transparent</item>
         <item name="android:fontFamily">Open Sans</item>
     </style>
 
 
     <!-- Style pour le background de la page account_show -->
-    <!--<style name="accountShowBackground">
+    <style name="accountShowBackground">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:alpha">0.5</item>
-    </style>-->
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:background">@drawable/account_show_background</item>
+    </style>
 
 
     <!-- Style pour le CookieCount -->
@@ -124,10 +136,11 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">400dp</item>
         <item name="android:layout_margin">30dp</item>
+        <item name="android:src">@drawable/cookie</item>
     </style>
 
 
-    <!-- Syle pour le fragment (à partir de l'activité jeu) -->
+    <!-- Style pour le fragment upgrades (dans l'activité jeu) -->
     <style name="upgradesFragment">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -137,7 +150,7 @@
     </style>
 
 
-    <!-- Style pour le titre du fragment (Upgrades) -->
+    <!-- Style pour le titre du fragment upgrades -->
     <style name="upgradesTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -176,7 +189,7 @@
     </style>
 
 
-    <!-- Style pour les messages d'alerte -->
+    <!-- Style pour le message d'alerte -->
     <style name="alertMessage">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

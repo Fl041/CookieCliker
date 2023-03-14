@@ -12,63 +12,46 @@
             style="@style/titre"
             android:text="@string/accountShowTitle" />
 
-        <!--<FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <ImageView
-                style="@style/accountShowBackground"
-                android:src="@drawable/account_show_background" />-->
+            <LinearLayout
+                style="@style/accountShowBackground" >
 
-        <TextView
-            android:id="@+id/usernameShow"
-            style="@style/accountShow"
-            android:layout_marginTop="0dp" />
+                <TextView
+                    android:id="@+id/usernameShow"
+                    style="@style/accountShow" />
 
-        <TextView
-            android:id="@+id/emailShow"
-            style="@style/accountShow" />
+                <TextView
+                    android:id="@+id/emailShow"
+                    style="@style/accountShow" />
 
-        <TextView
-            android:id="@+id/passwordShow"
-            style="@style/accountShow" />
+                <TextView
+                    android:id="@+id/passwordShow"
+                    style="@style/accountShow" />
 
-        <TextView
-            android:id="@+id/cookiesnb"
-            style="@style/accountShow" />
-        <!--</FrameLayout>-->
+                <TextView
+                    android:id="@+id/cookiesnb"
+                    style="@style/accountShow" />
 
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent">
 
-            <TextView
-                android:id="@+id/avatarShow"
-                style="@style/accountShow" />
+                    <TextView
+                        android:id="@+id/avatarShow"
+                        style="@style/accountShow" />
 
-            <ImageView
-                android:id="@+id/avatarImg"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/circle" />
-        </TableRow>
+                    <ImageView
+                        android:id="@+id/avatarImg"
+                        style="@style/chooseImg" />
+                </TableRow>
 
-        <!--<TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/cookieShow"
-                style="@style/accountShow" />
-
-            <ImageView
-                android:id="@+id/cookieImg"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/circle" />
-        </TableRow>-->
+        </RelativeLayout>
 
         <Button
             android:id="@+id/accountUpdateBtn"
